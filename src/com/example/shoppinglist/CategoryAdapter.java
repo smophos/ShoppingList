@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.net.Uri;
@@ -25,7 +26,7 @@ public class CategoryAdapter extends BaseAdapter {
 	public CategoryAdapter(Context context, ArrayList<ShoppingCategory> categoryList){
 		
 		mContext=context;
-		mCategoryList=categoryList;
+		mCategoryList= categoryList;
 		mResource=R.layout.category_list;
 		
 	}

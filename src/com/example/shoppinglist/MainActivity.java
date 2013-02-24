@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -205,12 +206,9 @@ public class MainActivity extends Activity {
 			    mList.add(category);
 		    }
 		}  
-		
+
+		Collections.sort(mList, new CategoryComparator());
 		mAdapter=new CategoryAdapter(this,mList);
-		
-		
-		
-		
 		mListView.setAdapter(mAdapter);
 		
 		mListView.setOnItemClickListener(new OnItemClickListener() {
