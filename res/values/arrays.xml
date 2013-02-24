@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="category_list_names">
+        
+        <item>Books</item>
+        <item>Groceries</item>
+        <item>Gifts</item>
+        <item>Electronics</item>
+        <item>Fun</item>
+        <item>Sports</item>
+        <item>Stationary</item>
+        <item>Cleaning</item>
+       
+    </array>
+    
+    <array name="category_list_icons">
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        <item>0x7f020003</item>
+        
+    </array>
+    
+    <array name="category_list_numbers">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+    </array>
+    
+    <array name="Books">
+        
+        <item>Harry Potter</item>
+        <item>Glass Books of the Dream Eaters</item>
+        <item>Wheel of Time: Knife of Dreams </item>
+        <item>The Book Thief</item>
+        <item>Memoirs of Geisha</item>
+    
+    </array>
+    
+    <array name="Books_amount">
+        
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        <item>2</item>
+        
+    </array>
+    <array name="Groceries">
+        <item>Banana</item>
+        <item>Eggs</item>
+        <item>Mayonnaise</item>
+        <item>Chocolates</item>
+        <item>Cheese</item>
+    </array>
+    
+    <array name="Groceries_amount">
+        
+        <item>3</item>
+        <item>6</item>
+        <item>3</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+</resources>
