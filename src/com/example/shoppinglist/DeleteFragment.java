@@ -38,7 +38,7 @@ public class DeleteFragment extends DialogFragment {
 		mlistview=(ListView)view.findViewById(R.id.deleteList);
 		
 		List<String> list = new ArrayList<String>();
-		getDialog().setTitle("Select A Option");
+		getDialog().setTitle("Select An Option");
 		list.add("Delete Category");
 		list.add("Delete Location");
 		

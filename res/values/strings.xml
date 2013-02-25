@@ -11,5 +11,7 @@
     <string name="title_activity_settings">SettingsActivity</string>
     <string name="deletecontext">Delete Category</string>
     <string name="title_activity_delete_list">DeleteList</string>
+    <string name="title_activity_add_item">AddItemActivity</string>
+    <string name="title_activity_delete_item_list">DeleteItemList</string>
 
 </resources>

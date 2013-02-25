@@ -21,8 +21,8 @@ public class SettingsActivityOption extends Activity{
 		num1=(NumberPicker)findViewById(R.id.numberPicker1);
 		num2=(NumberPicker)findViewById(R.id.numberPicker2);
 		
-		num1.setMaxValue(31);
-		num2.setMaxValue(12);
+		num1.setMaxValue(24);
+		num2.setMaxValue(60);
 		
 		ArrayList<String> list=new ArrayList<String>();
 		

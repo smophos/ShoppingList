@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,17 +11,20 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 public class CategoryActivity extends Activity {
 
 	private Intent mIntent;
 	private Resources mResource;
 	private ArrayList<ItemData> mList;
+	static List<String> mDelete_list;
 	private ListView mListView;
 	private String mItem;
-	private CategoryDataAdapter mAdapter;
+	private static CategoryDataAdapter mAdapter;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +37,7 @@ public class CategoryActivity extends Activity {
 		String itemType= mIntent.getStringExtra("category");
 		//0x7f020000
 		mItem=itemType;
-		Toast.makeText(this, "inside activity " +  mItem, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(this, "inside activity " +  mItem, Toast.LENGTH_SHORT).show();
 		
 		int icon=mIntent.getIntExtra("icon",0);
 		Log.i("saumya","icon value "+icon);
@@ -52,6 +56,24 @@ public class CategoryActivity extends Activity {
 		
 	}
 
+	@Override
+	protected void onStart() {
+		// TODO Auto-generated method stub
+		super.onStart();
+		Log.i("saumya","ON START");
+		fillList();
+		mAdapter=new CategoryDataAdapter(this, mList);
+		mListView.setAdapter(mAdapter);
+	}
+	
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		Log.i("saumya","ON RESTART");
+		mAdapter=new CategoryDataAdapter(this, mList);
+		mListView.setAdapter(mAdapter);
+	}
 	void fillList(){
 		
 		final Uri queryUri=Uri.parse(ShoppingListDatabaseProvider.URISELECTITEM);
@@ -68,6 +90,7 @@ public class CategoryActivity extends Activity {
 		}
 		
 		mList=new ArrayList<ItemData>();
+		mDelete_list=new ArrayList<String>();
 		Log.i("saumya","adding to a list "+ cursor.moveToFirst() );
 		
 		for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
@@ -78,10 +101,8 @@ public class CategoryActivity extends Activity {
 		    data.setCategoryName(cursor.getString(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYITEMTYPE)));
 		    data.setItemName(cursor.getString(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYITEMNAME)));
 		    data.setItemAmount(cursor.getInt(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYITEMAMOUNT)));
-		    
-		    //Log.i("saumya","adding to the list "+ data.getItemName());
-		    //Toast.makeText(this, "Adding data "+ data.getItemName(), Toast.LENGTH_SHORT).show();  
-		   
+		    mDelete_list.add(data.getItemName());
+		    Log.i("saumya","item + "+ data.getItemName());
 		    mList.add(data);
 		    
 		}
@@ -92,7 +113,40 @@ public class CategoryActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_category, menu);
+		
+		MenuItem additem=(MenuItem)menu.findItem(R.id.additem);
+		additem.setOnMenuItemClickListener(new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(getBaseContext(),AddItemActivity.class);
+				intent.putExtra("type", mItem);
+				startActivity(intent);
+				
+				return false;
+			}
+			
+		});
+		
+		MenuItem deleteitem=(MenuItem)menu.findItem(R.id.deleteitem);
+		deleteitem.setOnMenuItemClickListener( new OnMenuItemClickListener(){
+
+			@Override
+			public boolean onMenuItemClick(MenuItem arg0) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(getBaseContext(),DeleteItemList.class);
+				intent.putExtra("type", mItem);
+				startActivity(intent);
+				return false;
+				
+			}
+			
+		});
+		
+		
 		return true;
 	}
+	
 
 }

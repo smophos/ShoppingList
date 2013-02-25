@@ -45,6 +45,7 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 	//public static final String URIADDCATEGORY="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Category-Query/4";
 	public static final String URIITEMINSERT = "content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Category-Item-Query/";
 	public static final String URIDELETE="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Delete-Query/";
+	public static final String URIDELETEITEM="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Delete-Item-Query/";
 	public static final String URIRENAME="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Rename-Query/";
 	private TypedArray mCategory_Names;
 	private TypedArray mCategory_Numbers;
@@ -94,6 +95,15 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 			mDatabase.delete(CATEGORYTYPETABLE, whereClause+"=?", whereArgs);
 			mDatabase.execSQL("Delete from "+ CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMTYPE +"='"+whereArgs[0]+"'");
 		}
+		if(Uri.parse(URIDELETEITEM).equals(uri)){
+			
+			Log.i("saumya","deleting item "+whereClause+ " with values "+whereArgs[0]);
+			
+			mDatabase.delete(CATEGORYITEMTYPETABLE, whereClause+"=?", whereArgs);
+			//mDatabase.execSQL("Delete from "+ CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMNAME +"='"+whereArgs[0]+"'");
+			
+		}
+		
 		return 0;
 	}
 
@@ -175,6 +185,12 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 		
 			mDatabase.update(CATEGORYTYPETABLE, values, stringFilter, null);
 		}
+		if(Uri.parse(URIDELETEITEM).equals(uri)){
+			
+			mDatabase.execSQL("Update "+ CATEGORYTYPETABLE + " set "+CATEGORYTYPEAMOUNT +"=(Select COUNT(DISTINCT "+ CATEGORYITEMNAME + ") from "+CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMTYPE+"='"+values.getAsString("categorytype")+"') where "+CATEGORYTYPENAME+ "='"+values.getAsString("categorytype")+"'" );
+			
+		}
+		
 		return 0;
 	}
 	

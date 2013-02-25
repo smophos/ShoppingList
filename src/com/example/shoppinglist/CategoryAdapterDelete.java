@@ -50,7 +50,7 @@ class CategoryAdapterDelete extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parentGroup) {
 		
 		// TODO Auto-generated method stub
-		
+		Log.i("saumya","WHERE ARE YOU");
 		RelativeLayout layout;
 		ShoppingCategory category= (ShoppingCategory)getItem(position);
 		

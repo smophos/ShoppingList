@@ -1,13 +1,12 @@
 package com.example.shoppinglist;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class AddFragment extends DialogFragment{
@@ -37,7 +35,7 @@ public class AddFragment extends DialogFragment{
 		mlistview=(ListView)view.findViewById(R.id.addList);
 		
 		mlist = new ArrayList<String>();
-		getDialog().setTitle("Select A Option");
+		getDialog().setTitle("Select An Option");
 		mlist.add("Add Category");
 		mlist.add("Add A Location");
 		mlist.add("Add A Time");
@@ -59,7 +57,8 @@ public class AddFragment extends DialogFragment{
 							fragment.show(manager, "add category");
 							getDialog().dismiss();
 							break;
-					case 1: Toast.makeText(getActivity(), "", Toast.LENGTH_LONG).show();
+					case 1: 
+							
 							break;
 					case 2: Toast.makeText(getActivity(), "", Toast.LENGTH_LONG).show();
 							break;

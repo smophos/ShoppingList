@@ -268,6 +268,7 @@ public class MainActivity extends Activity {
 		 TextView text=(TextView)mSelectedView.findViewById(R.id.cat_name);
 		 String textString=text.getText().toString();
 		 CharSequence[] arr=mResources.getTextArray(R.array.category_list_names);
+		 
 		 /*int flag=0;
 		 for(CharSequence charitem : arr){
 			 if(charitem.toString().equalsIgnoreCase(textString)){

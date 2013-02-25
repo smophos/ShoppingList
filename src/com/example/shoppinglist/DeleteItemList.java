@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,25 +18,25 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
 
-public class DeleteList extends Activity {
+public class DeleteItemList extends Activity {
 
 	private ListView mListView;
 	private List<String> mDelete_list;
-	
+	private String mType;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.delete_listview);
-		Log.i("saumya","inflated view");
-		mListView=(ListView)findViewById(R.id.deleteList);
+		setContentView(R.layout.activity_delete_item_list);
+		
+		mListView=(ListView)findViewById(R.id.deleteitemlist);
 		
 		mDelete_list=new ArrayList<String>();
 		
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_checked, MainActivity.mCategoryList);
+		mType=getIntent().getExtras().getString("type");
+		
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_checked, CategoryActivity.mDelete_list);
 		mListView.setAdapter(dataAdapter);
 		mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-		
-		
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -47,21 +46,19 @@ public class DeleteList extends Activity {
 				
 				CheckedTextView v=(CheckedTextView)arg1;
 				
-				
-				
 				mDelete_list.add(position+"");
 				Log.i("saumya","The list contains position "+mDelete_list.contains(position+""));
+				
 				mListView.setItemChecked(position, true);
 			}
 		});
-		
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_delete_list, menu);
-		MenuItem delete=(MenuItem)menu.findItem(R.id.deletemenu);
+		getMenuInflater().inflate(R.menu.activity_delete_item_list, menu);
+		MenuItem delete=(MenuItem)menu.findItem(R.id.deleteitem);
 		delete.setOnMenuItemClickListener(new OnMenuItemClickListener() {
 			
 			@Override
@@ -72,11 +69,14 @@ public class DeleteList extends Activity {
 					
 					int position= Integer.parseInt(string);
 					Log.i("saumya","deleting the item at position "+ position + " with value " + MainActivity.mCategoryList.get(position) );
-			
 					
-					String data[]=new String[]{MainActivity.mCategoryList.get(position)};
-					getContentResolver().delete(Uri.parse(ShoppingListDatabaseProvider.URIDELETE),ShoppingListDatabaseProvider.CATEGORYTYPENAME,data);
 					
+					String data[]=new String[]{CategoryActivity.mDelete_list.get(position)};
+					Log.i("saumya","the array contains "+ CategoryActivity.mDelete_list.get(position));
+					getContentResolver().delete(Uri.parse(ShoppingListDatabaseProvider.URIDELETEITEM),ShoppingListDatabaseProvider.CATEGORYITEMNAME,data);
+					ContentValues value=new ContentValues();
+					value.put("categorytype",mType);
+					getContentResolver().update(Uri.parse(ShoppingListDatabaseProvider.URIDELETEITEM), value, null, null);
 				
 				}
 				
@@ -86,6 +86,7 @@ public class DeleteList extends Activity {
 				return false;
 			}
 		});
+		
 		return true;
 	}
 
