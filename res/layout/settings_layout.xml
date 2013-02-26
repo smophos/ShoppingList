@@ -3,61 +3,40 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" >
 
-         <TextView
-             android:id="@+id/textView2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_below="@+id/numberPicker1"
-             android:layout_centerHorizontal="true"
-             android:layout_marginTop="22dp"
-             android:text="Select the proximity radius"
-             android:textAppearance="?android:attr/textAppearanceMedium" />
+        <Spinner
+            android:id="@+id/spinner1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignRight="@+id/textView2"
+            android:layout_below="@+id/textView2" />
 
-         <Spinner
-             android:id="@+id/spinner1"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/numberPicker1"
-             android:layout_alignRight="@+id/numberPicker2"
-             android:layout_below="@+id/textView2"
-             android:layout_marginTop="16dp" />
+        <TimePicker
+            android:id="@+id/timePicker1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/textView1" />
 
-         <NumberPicker
-             android:id="@+id/numberPicker2"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_above="@+id/textView2"
-             android:layout_alignRight="@+id/textView2"
-             android:layout_marginRight="19dp"
-          />
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:text="Enter default time for Date Notifications"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-         <NumberPicker
-             android:id="@+id/numberPicker1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/textView2"
-             android:layout_below="@+id/textView1"
-             android:layout_marginLeft="18dp"
-             android:layout_marginTop="22dp" />
-
-         <TextView
-             android:id="@+id/textView1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/numberPicker1"
-             android:layout_alignParentTop="true"
-             android:layout_alignRight="@+id/numberPicker2"
-             android:layout_marginTop="32dp"
-             android:text="Enter default time for Date Notifications"
-             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-         <Button
-             android:id="@+id/button1"
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/spinner1"
-             android:layout_alignRight="@+id/spinner1"
-             android:layout_below="@+id/spinner1"
-             android:text="Save Changes" />
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="Select the proximity radius"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
     </RelativeLayout>

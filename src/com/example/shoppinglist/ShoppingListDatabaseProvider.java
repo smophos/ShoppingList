@@ -16,7 +16,7 @@ import android.util.Log;
 public class ShoppingListDatabaseProvider extends ContentProvider{
 
 	public static final String DATABASE_NAME="ShoppingDatabase";
-	public static final int VERSION=7;
+	public static final int VERSION=8;
 	  
 	//Table names
 	public static final String CATEGORYTYPETABLE="CategoryType";
@@ -32,6 +32,7 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 	public static final String CATEGORYITEMNAME="CategoryItemName";
 	public static final String CATEGORYITEMAMOUNT="CategoryAmountName";
 	public static final String CATEGORYITEMTYPE="CategoryItemType";
+	public static final String CATEGORYITEMTIME="CategoryItemTime";
 	
 	private MyOpenHelper mHelper;
 	private SQLiteDatabase mDatabase;
@@ -72,7 +73,8 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 			db.execSQL("Create table "+CATEGORYITEMTYPETABLE+" ( "+CATEGORYITEMID+" Integer primary key autoincrement, "
 					+CATEGORYITEMNAME+" text not null, "
 					+CATEGORYITEMAMOUNT+" long not null, "
-					+CATEGORYITEMTYPE+" text not null )");
+					+CATEGORYITEMTYPE+" text not null,"
+					+CATEGORYITEMTIME+" text)");
 			Log.i("saumya","Tables Created!");
 		}
 
@@ -127,7 +129,8 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 		
 		if(Uri.parse(URIITEMINSERT).equals(uri)){
 			
-			mDatabase.execSQL("Insert into "+ ShoppingListDatabaseProvider.CATEGORYITEMTYPETABLE +" values("+null+",'"+values.getAsString("itemname")+"',"+values.getAsInteger("itemamount")+",'"+values.getAsString("categorytype")+"')");
+			
+			mDatabase.execSQL("Insert into "+ ShoppingListDatabaseProvider.CATEGORYITEMTYPETABLE +" values("+null+",'"+values.getAsString("itemname")+"',"+values.getAsInteger("itemamount")+",'"+values.getAsString("categorytype")+"','"+values.getAsString("time")+"')");
 			mDatabase.execSQL("Update "+ CATEGORYTYPETABLE + " set "+CATEGORYTYPEAMOUNT +"=(Select COUNT(DISTINCT "+ CATEGORYITEMNAME + ") from "+CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMTYPE+"='"+values.getAsString("categorytype")+"') where "+CATEGORYTYPENAME+ "='"+values.getAsString("categorytype")+"'" );
 		
 		}
@@ -182,7 +185,6 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 		// TODO Auto-generated method stub
 		if(Uri.parse(URIRENAME).equals(uri)){
 			
-		
 			mDatabase.update(CATEGORYTYPETABLE, values, stringFilter, null);
 		}
 		if(Uri.parse(URIDELETEITEM).equals(uri)){

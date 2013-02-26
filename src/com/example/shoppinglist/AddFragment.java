@@ -30,6 +30,7 @@ public class AddFragment extends DialogFragment{
 			Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		reference=this;
+		
 		View view=inflater.inflate(R.layout.add_listview, container);
 		
 		mlistview=(ListView)view.findViewById(R.id.addList);

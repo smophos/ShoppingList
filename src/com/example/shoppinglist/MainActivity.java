@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.app.FragmentManager;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -56,14 +57,16 @@ public class MainActivity extends Activity {
 		mResources=getResources();
 		
 		mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		
 		//mListView.setSelector(R.drawable.listselector);
 		//mListView.setSelected(true);
+		
 		mListView.cancelLongPress();
 		registerForContextMenu(mListView);
 		
 		
 		
-		fillDatabase();
+		//fillDatabase();
 		fillCategoryList();
 		
 		
@@ -124,7 +127,7 @@ public class MainActivity extends Activity {
 		
 		
 		
-		
+		/*
 		for(int i=0;i<mItem_Names.length();i++){
 			
 			final Uri queryUri=Uri.parse(ShoppingListDatabaseProvider.URISELECTITEM);
@@ -172,7 +175,7 @@ public class MainActivity extends Activity {
 			}
 		
 		}
-	}
+*/	}
 
 	void fillCategoryList() {
 		// TODO Auto-generated method stub
@@ -200,7 +203,7 @@ public class MainActivity extends Activity {
 		    	ShoppingCategory category=new ShoppingCategory();
 			    category.setCategoryName(cursor.getString(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYTYPENAME)));
 			    category.setCategoryNumber(cursor.getInt(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYTYPEAMOUNT)));
-			    category.setCategoryIcon(cursor.getInt(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYTYPEICON)));
+			    category.setCategoryIcon(R.drawable.ic_launcher);
 			    mCategoryList.add(cursor.getString(cursor.getColumnIndex(ShoppingListDatabaseProvider.CATEGORYTYPENAME)));
 			    
 			    mList.add(category);
@@ -231,9 +234,10 @@ public class MainActivity extends Activity {
 					intent.putExtra("icon",i );
 					
 					mListView.clearFocus();
-					
+					//ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view1, 0,
+						     // 0, view1.getWidth(), view1.getHeight());
 					startActivity(intent);
-				
+					overridePendingTransition  (R.animator.right_slide_in,R.animator.do_nothing);
 				
 			}
 			

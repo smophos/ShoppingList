@@ -1,9 +1,63 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingsActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
-    
+         <TextView
+             android:id="@+id/textView2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/numberPicker1"
+             android:layout_centerHorizontal="true"
+             android:layout_marginTop="22dp"
+             android:text="Select the proximity radius"
+             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-</RelativeLayout>
+         <Spinner
+             android:id="@+id/spinner1"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/numberPicker1"
+             android:layout_alignRight="@+id/numberPicker2"
+             android:layout_below="@+id/textView2"
+             android:layout_marginTop="16dp" />
+
+         <NumberPicker
+             android:id="@+id/numberPicker2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_above="@+id/textView2"
+             android:layout_alignRight="@+id/textView2"
+             android:layout_marginRight="19dp"
+          />
+
+         <NumberPicker
+             android:id="@+id/numberPicker1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/textView2"
+             android:layout_below="@+id/textView1"
+             android:layout_marginLeft="18dp"
+             android:layout_marginTop="22dp" />
+
+         <TextView
+             android:id="@+id/textView1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/numberPicker1"
+             android:layout_alignParentTop="true"
+             android:layout_alignRight="@+id/numberPicker2"
+             android:layout_marginTop="32dp"
+             android:text="Enter default time for Date Notifications"
+             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+         <Button
+             android:id="@+id/button1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_alignLeft="@+id/spinner1"
+             android:layout_alignRight="@+id/spinner1"
+             android:layout_below="@+id/spinner1"
+             android:text="Save Changes" />
+
+    </RelativeLayout>

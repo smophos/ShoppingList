@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.widget.ArrayAdapter;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
 
 public class SettingsActivityOption extends Activity{
 
-	NumberPicker num1,num2;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -18,11 +18,7 @@ public class SettingsActivityOption extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.settings_layout);
 		
-		num1=(NumberPicker)findViewById(R.id.numberPicker1);
-		num2=(NumberPicker)findViewById(R.id.numberPicker2);
 		
-		num1.setMaxValue(24);
-		num2.setMaxValue(60);
 		
 		ArrayList<String> list=new ArrayList<String>();
 		
@@ -37,7 +33,13 @@ public class SettingsActivityOption extends Activity{
 		spinner.setAdapter(adapter);
 		
 	}
-	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		
+		getMenuInflater().inflate(R.menu.activity_settings, menu);
+		return true;
+	}
 //	@Override
 //	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 //			Bundle savedInstanceState) {

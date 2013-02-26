@@ -13,5 +13,6 @@
     <string name="title_activity_delete_list">DeleteList</string>
     <string name="title_activity_add_item">AddItemActivity</string>
     <string name="title_activity_delete_item_list">DeleteItemList</string>
+    <string name="title_activity_add_time_date">AddTimeDate</string>
 
 </resources>
