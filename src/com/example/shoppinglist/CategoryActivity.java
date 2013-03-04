@@ -13,8 +13,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
-import android.widget.EditText;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class CategoryActivity extends Activity {
 
@@ -51,8 +54,20 @@ public class CategoryActivity extends Activity {
 		
 		mAdapter=new CategoryDataAdapter(this, mList);
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View view, int position,
+					long arg3) {
+				// TODO Auto-generated method stub
+				TextView text= (TextView) view.findViewById(R.id.itemnameval);
+				Intent intent = new Intent(getBaseContext(),EditActivity.class);
+				intent.putExtra("name", text.getText().toString());
+				
+			}
 		
 		
+		});
 		
 	}
 

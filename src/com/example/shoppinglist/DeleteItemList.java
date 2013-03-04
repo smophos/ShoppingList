@@ -68,7 +68,7 @@ public class DeleteItemList extends Activity {
 				for(String string:mDelete_list){
 					
 					int position= Integer.parseInt(string);
-					Log.i("saumya","deleting the item at position "+ position + " with value " + MainActivity.mCategoryList.get(position) );
+					Log.i("saumya","deleting the item at position "+ position + " with value " + CategoryActivity.mDelete_list.get(position) );
 					
 					
 					String data[]=new String[]{CategoryActivity.mDelete_list.get(position)};

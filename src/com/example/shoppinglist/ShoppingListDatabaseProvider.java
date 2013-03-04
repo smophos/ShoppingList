@@ -74,16 +74,18 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 					+CATEGORYITEMNAME+" text not null, "
 					+CATEGORYITEMAMOUNT+" long not null, "
 					+CATEGORYITEMTYPE+" text not null,"
-					+CATEGORYITEMTIME+" text)");
+					+CATEGORYITEMTIME+" DATETIME)");
 			Log.i("saumya","Tables Created!");
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			// TODO Auto-generated method stub
+			
 			db.execSQL("DROP TABLE IF EXISTS "+CATEGORYTYPETABLE);
 			db.execSQL("DROP TABLE IF EXISTS "+CATEGORYITEMTYPETABLE);
 			onCreate(db);
+		
 		}
 		
 	}

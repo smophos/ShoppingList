@@ -234,8 +234,10 @@ public class MainActivity extends Activity {
 					intent.putExtra("icon",i );
 					
 					mListView.clearFocus();
+					
 					//ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view1, 0,
-						     // 0, view1.getWidth(), view1.getHeight());
+					// 0, view1.getWidth(), view1.getHeight());
+					
 					startActivity(intent);
 					overridePendingTransition  (R.animator.right_slide_in,R.animator.do_nothing);
 				
@@ -342,7 +344,7 @@ public class MainActivity extends Activity {
 				DeleteFragment fragment= new DeleteFragment();
 				fragment.show(manager, "delete");
 				
-				
+	
 				return false;
 			}
 		
