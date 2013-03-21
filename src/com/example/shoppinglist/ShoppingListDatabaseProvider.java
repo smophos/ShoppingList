@@ -97,6 +97,7 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 		if(Uri.parse(URIDELETE).equals(uri)){
 			Log.i("saumya","deleting item "+whereClause+ " with values "+whereArgs[0]);
 			mDatabase.delete(CATEGORYTYPETABLE, whereClause+"=?", whereArgs);
+			
 			mDatabase.execSQL("Delete from "+ CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMTYPE +"='"+whereArgs[0]+"'");
 		}
 		if(Uri.parse(URIDELETEITEM).equals(uri)){

@@ -27,7 +27,7 @@ public class DeleteItemList extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_delete_item_list);
-		
+		getActionBar().setTitle("Choose the items");
 		mListView=(ListView)findViewById(R.id.deleteitemlist);
 		
 		mDelete_list=new ArrayList<String>();
@@ -43,13 +43,14 @@ public class DeleteItemList extends Activity {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long arg3) {
 				// TODO Auto-generated method stub
+				if(mListView.isItemChecked(position)){
+					CheckedTextView v=(CheckedTextView)arg1;
 				
-				CheckedTextView v=(CheckedTextView)arg1;
+					mDelete_list.add(position+"");
+					Log.i("saumya","The list contains position "+mDelete_list.contains(position+""));
 				
-				mDelete_list.add(position+"");
-				Log.i("saumya","The list contains position "+mDelete_list.contains(position+""));
-				
-				mListView.setItemChecked(position, true);
+					mListView.setItemChecked(position, true);
+				}
 			}
 		});
 	}

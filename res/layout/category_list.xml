@@ -36,6 +36,9 @@
         android:layout_marginRight="70dp"
         android:layout_centerVertical="true"
         android:text="number"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@android:color/darker_gray"
+        android:background="@drawable/customdigit"
         android:textAppearance="?android:attr/textAppearanceLarge" />
     
    <!--  <Button

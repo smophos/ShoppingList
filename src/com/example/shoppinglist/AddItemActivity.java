@@ -2,19 +2,27 @@ package com.example.shoppinglist;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,8 +32,9 @@ public class AddItemActivity extends Activity {
 	
 	private EditText itemname, itemamount;
 	private String itemName, itemAmount, mType;
-	private TextView timeText;
-	Button mButton;
+	private TextView mTimeText;
+	private CheckBox mCheckBox;
+	Button mTimeButton;
 	
 	final static int PICKED_TIME=0;
 	final static int PICKED_TIME_TRUE=1;
@@ -35,7 +44,7 @@ public class AddItemActivity extends Activity {
 	final static int PICKED_DATE_FALSE=5;
 
 	String time; 
-	
+	int year,month,date,hour,minute;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -44,10 +53,12 @@ public class AddItemActivity extends Activity {
 		
 		
 		getActionBar().setTitle("Add an Item");
-		timeText=(TextView)findViewById(R.id.textTime);
+		mTimeText=(TextView)findViewById(R.id.textTime);
 		mType=getIntent().getExtras().getString("type");
-		mButton=(Button)findViewById(R.id.button_time);
-		mButton.setOnClickListener(new OnClickListener(){
+		
+		
+		mTimeButton=(Button)findViewById(R.id.button_time);
+		mTimeButton.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
@@ -58,6 +69,22 @@ public class AddItemActivity extends Activity {
 			
 		});
 		
+		mCheckBox = (CheckBox) findViewById(R.id.checkBox1);
+		mCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			
+			@Override
+			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
+				// TODO Auto-generated method stub
+				if(arg1==true){
+					mTimeText.setVisibility(View.VISIBLE);
+					mTimeButton.setVisibility(View.VISIBLE);
+				}
+				else {
+					mTimeText.setVisibility(View.GONE);
+					mTimeButton.setVisibility(View.GONE);
+				}
+			}
+		});
 	}
 	
 	@Override
@@ -70,6 +97,11 @@ public class AddItemActivity extends Activity {
 			
 			switch(resultCode){
 				case  PICKED_TIME_TRUE: 
+										year=Integer.parseInt(data.getExtras().getString("dateyear"));
+										month=Integer.parseInt(data.getExtras().getString("datemonth"));
+										date=Integer.parseInt(data.getExtras().getString("dateday"));
+										hour=Integer.parseInt(data.getExtras().getString("timehour"));
+										minute=Integer.parseInt(data.getExtras().getString("timeminute"));
 										
 										time=""+data.getExtras().getString("dateyear")+"-"+ data.getExtras().getString("datemonth")+"-"+data.getExtras().getString("dateday") + " " +data.getExtras().getString("timehour") + ":"+data.getExtras().getString("timeminute")  + ":00";
 										//timeText.setText("Time chosen is "+ data.getExtras().getString("timehour") + " : "+data.getExtras().getString("timeminute")+ " at date "+ data.getExtras().getString("dateday")+ "/" + data.getExtras().getString("datemonth") +"/" +data.getExtras().getString("dateyear"));
@@ -88,14 +120,11 @@ public class AddItemActivity extends Activity {
 										}
 										String date =dateformat.format(enddate);
 										
-										timeText.setText(date);
-										Toast.makeText(getApplicationContext(), "The time  "+ date  , Toast.LENGTH_LONG).show();
+										mTimeText.setText(date);
+										Toast.makeText(getApplicationContext(), date  , Toast.LENGTH_LONG).show();
+													
 										
-										
-										
-										
-									    break;
-				
+										break;
 				
 				case PICKED_TIME_FALSE:
 										break;
@@ -130,14 +159,59 @@ public class AddItemActivity extends Activity {
 				}
 				
 				ContentValues insert=new ContentValues();
-				
+				if(itemName.contains("'")){
+					itemName=itemName.replace("'", "''");
+				}
 				insert.put("itemname",itemName);
 				insert.put("itemamount", itemAmount);
+				if(mType.contains("'")){
+					mType=mType.replace("'", "''");
+				}
 				insert.put("categorytype", mType);
-				if(!timeText.getText().toString().equals("Time is not set")){
-					insert.put("time",timeText.getText().toString());
+				if(!mTimeText.getText().toString().equals("Time is not set")){
+					
+					insert.put("time",mTimeText.getText().toString());
+					
+					
+						Log.i("saumya","initialising calendar");
+						Calendar cal;
+						cal = Calendar.getInstance();
+						SimpleDateFormat dateformat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+						Date date1=null;
+						try {
+							date1 = dateformat.parse(time);
+						} catch (ParseException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						cal.setTime(date1);
+						Toast.makeText(getBaseContext(),"reminder set for "+ year+ " " + month + " " + date + " " + hour + " " + minute, Toast.LENGTH_LONG).show();
+				
+						Intent startIntent = new Intent("WorkAlarm");
+						
+						startIntent.putExtra("year",year);
+						startIntent.putExtra("month",month);
+						startIntent.putExtra("date",date);
+						startIntent.putExtra("hour",hour);
+						startIntent.putExtra("minute",minute);
+						
+						startIntent.putExtra("itemname", itemName);
+						startIntent.putExtra("itemamount", itemAmount);
+						
+						
+						//int requestCode=(int) System.currentTimeMillis();
+						int requestCode= itemName.hashCode();
+						PendingIntent startPIntent = PendingIntent.getBroadcast(getBaseContext(), requestCode, startIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+					
+						AlarmManager alarm = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
+						alarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), startPIntent);
+						
+			            
+						
+						
 				}
 				else 
+				
 					insert.put("time","");
 					
 				getContentResolver().insert(Uri.parse(ShoppingListDatabaseProvider.URIITEMINSERT),insert );

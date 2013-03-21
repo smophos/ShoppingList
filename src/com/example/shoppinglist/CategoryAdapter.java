@@ -83,7 +83,7 @@ public class CategoryAdapter extends BaseAdapter {
 		}
 		
 		ImageView category_image=(ImageView)view.findViewById(R.id.imageView1);
-		category_image.setImageURI(image_resource);
+		category_image.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_pin));
 		
 		//category_image.setImageResource(image_resource);
 		TextView categoryname_view=(TextView)view.findViewById(R.id.cat_name);

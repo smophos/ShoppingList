@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 public class CategoryActivity extends Activity {
 
+	
 	private Intent mIntent;
 	private Resources mResource;
 	private ArrayList<ItemData> mList;
@@ -63,7 +64,7 @@ public class CategoryActivity extends Activity {
 				TextView text= (TextView) view.findViewById(R.id.itemnameval);
 				Intent intent = new Intent(getBaseContext(),EditActivity.class);
 				intent.putExtra("name", text.getText().toString());
-				
+				startActivity(intent);
 			}
 		
 		

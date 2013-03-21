@@ -20,7 +20,9 @@ public class AddCategoryFragment extends DialogFragment{
 	
 	private Button mbutton;
 	private EditText mEditText;
-	
+	/**
+	 * Add Category Fragment is a fragment which works on adding the 
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

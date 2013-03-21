@@ -1,6 +1,11 @@
 package com.example.shoppinglist;
 
+import java.util.Calendar;
+
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -51,8 +56,8 @@ public class AddTimeDate extends Activity {
 				PendingIntent startPIntent = PendingIntent.getBroadcast(getBaseContext(), requestCode, startIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 			
 				AlarmManager alarm = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
-				alarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), startPIntent);
-				*/
+				alarm.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), startPIntent);*/
+				
 				
 				Intent intent= new Intent(getBaseContext(),AddItemActivity.class);
 				intent.putExtra("timehour", time.getCurrentHour()+"");

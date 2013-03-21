@@ -239,7 +239,7 @@ public class MainActivity extends Activity {
 					// 0, view1.getWidth(), view1.getHeight());
 					
 					startActivity(intent);
-					overridePendingTransition  (R.animator.right_slide_in,R.animator.do_nothing);
+					//overridePendingTransition  (R.animator.right_slide_in,R.animator.do_nothing);
 				
 			}
 			

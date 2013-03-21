@@ -18,6 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class DeleteList extends Activity {
 
@@ -45,13 +46,18 @@ public class DeleteList extends Activity {
 					long arg3) {
 				// TODO Auto-generated method stub
 				
-				CheckedTextView v=(CheckedTextView)arg1;
-				
-				
-				
-				mDelete_list.add(position+"");
-				Log.i("saumya","The list contains position "+mDelete_list.contains(position+""));
-				mListView.setItemChecked(position, true);
+				if(mListView.isItemChecked(position)){
+					
+					CheckedTextView v=(CheckedTextView)arg1;
+					mDelete_list.add(position+"");
+					Log.i("saumya","The list contains position "+mDelete_list.contains(position+""));
+					mListView.setItemChecked(position, true);
+				}
+				else{
+					//mDelete_list.remove(position+"");
+					mListView.setItemChecked(position, false);
+					//Toast.makeText(getBaseContext(), "Not selected", Toast.LENGTH_LONG).show();
+				}
 			}
 		});
 		
@@ -73,8 +79,12 @@ public class DeleteList extends Activity {
 					int position= Integer.parseInt(string);
 					Log.i("saumya","deleting the item at position "+ position + " with value " + MainActivity.mCategoryList.get(position) );
 			
+					String deletingItem = MainActivity.mCategoryList.get(position);
+					if(deletingItem.contains("'")){
+								deletingItem=deletingItem.replace("'", "''");
+					}
 					
-					String data[]=new String[]{MainActivity.mCategoryList.get(position)};
+					String data[]=new String[]{deletingItem};
 					getContentResolver().delete(Uri.parse(ShoppingListDatabaseProvider.URIDELETE),ShoppingListDatabaseProvider.CATEGORYTYPENAME,data);
 					
 				
