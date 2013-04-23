@@ -29,6 +29,11 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+           		 <action android:name="android.intent.action.SEARCH" />
+				 <meta-data android:name="android.app.searchable"
+                   android:resource="@xml/search1"/>        	
+        	</intent-filter>
         </activity>
         <activity
             android:name="com.example.shoppinglist.CategoryActivity"
@@ -75,7 +80,12 @@
 
         <activity
             android:name="com.example.shoppinglist.EditActivity"
-            android:label="@string/title_activity_edit" >
+            android:label="@string/title_activity_edit"
+            android:uiOptions="splitActionBarWhenNarrow" >
+        </activity>
+        <activity
+            android:name="com.example.shoppinglist.SearchActivity"
+            android:label="@string/title_activity_search" >
         </activity>
     </application>
 
