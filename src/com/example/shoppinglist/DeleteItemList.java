@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,7 +80,8 @@ public class DeleteItemList extends Activity {
 					ContentValues value=new ContentValues();
 					value.put("categorytype",mType);
 					getContentResolver().update(Uri.parse(ShoppingListDatabaseProvider.URIDELETEITEM), value, null, null);
-				
+					PendingIntent.getBroadcast(getBaseContext(),CategoryActivity.mDelete_list.get(position).hashCode() , new Intent("WorkAlarm"), 
+	                           PendingIntent.FLAG_UPDATE_CURRENT).cancel();
 				}
 				
 				mDelete_list=null;

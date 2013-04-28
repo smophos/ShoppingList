@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,8 +58,11 @@ public class MainActivity extends Activity {
 		mResources=getResources();
 		
 		mListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+		mListView.setCacheColorHint(Color.TRANSPARENT);
+		mListView.setAlwaysDrawnWithCacheEnabled(false);
 		
-		//mListView.setSelector(R.drawable.listselector);
+//		mListView.setSelector(R.drawable.listselector);
+		
 		//mListView.setSelected(true);
 		
 		mListView.cancelLongPress();

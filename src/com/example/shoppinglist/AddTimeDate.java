@@ -27,6 +27,8 @@ public class AddTimeDate extends Activity {
 		time=(TimePicker)findViewById(R.id.timePicker1);
 		date=(DatePicker)findViewById(R.id.datePicker1);
 		
+	
+	
 	}
 
 	@Override
