@@ -21,6 +21,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:inputType="textCapWords"
+        android:gravity="center"
         android:ems="10" >
 
         <requestFocus />
@@ -45,33 +46,77 @@
         android:text="Location is not set"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/itemamount_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/itemname_edit"
-        android:layout_below="@+id/textView2"
-        android:ems="10"
-        android:inputType="number" />
-
     <Button
         android:id="@+id/button1"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/itemamount_edit"
-        android:layout_alignRight="@+id/itemamount_edit"
+        android:layout_alignLeft="@+id/itemname_edit"
+        android:layout_alignRight="@+id/itemname_edit"
         android:layout_below="@+id/itemamount_edit"
         android:layout_marginTop="17dp"
         android:text="Set Purchase Location " />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="19dp"
+        android:text="Choose Date " />
+
+    <EditText
+        android:id="@+id/itemamount_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:ems="3"
+        android:gravity="center"
+        android:text="0"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/minusbutton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button1"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignTop="@+id/itemamount_edit"
+        android:layout_toLeftOf="@+id/itemamount_edit"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="-" />
+
+    <Button
+        android:id="@+id/plusbutton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/itemamount_edit"
+        android:layout_alignRight="@+id/textView3"
+        android:layout_alignTop="@+id/itemamount_edit"
+        android:layout_toRightOf="@+id/itemamount_edit"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="+" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_below="@+id/button2"
+        android:text="Add Specific Reminder" />
 
     <TextView
         android:id="@+id/textTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="55dp"
+        android:layout_below="@+id/button_time"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
         android:text="Time is not set"
         android:visibility="gone"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -81,19 +126,10 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textTime"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/checkBox1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
         android:visibility="gone"
         android:text="Set Time for Reminder" />
-
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:text="Add Individual Reminder" />
 
 </RelativeLayout>

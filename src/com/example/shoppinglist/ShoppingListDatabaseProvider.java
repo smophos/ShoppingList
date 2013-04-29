@@ -174,9 +174,9 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 			}
 		}
 		if(uri.equals(Uri.parse(URISELECTITEM))){
-			
+			Log.i("saumya","getting data item "+ selectionArgs[0]);	
 			cursor=mDatabase.query(CATEGORYITEMTYPETABLE, projection, selection+"=?", selectionArgs, null, null, null);
-			Log.i("saumya","getting data item "+ projection[0]);	
+			
 		}
 		
 		return cursor; 

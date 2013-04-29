@@ -16,22 +16,28 @@ public class TimeAlarm extends BroadcastReceiver{
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
 		
-		/*MediaPlayer btnSound = MediaPlayer.create(context,R.raw.beep);
-		btnSound.start();
-		*/
-		//Playing notifcation sound
-		 try {
-		        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-		        Ringtone r = RingtoneManager.getRingtone(context, notification);
-		        r.play();
-		 } catch (Exception e) {}
+		
+		if(intent.getAction().equals("WorkAlarm")){
+			/*MediaPlayer btnSound = MediaPlayer.create(context,R.raw.beep);
+			btnSound.start();
+		 	*/
+			//Playing notifcation sound
+			
+			try {
+		        	Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+		        	Ringtone r = RingtoneManager.getRingtone(context, notification);
+		        	r.play();
+		 	} catch (Exception e) {}
 		 
-		Toast.makeText(context,"this alarm has rung at time "+ intent.getExtras().get("time"),Toast.LENGTH_LONG).show();
-		NotificationManager manager= (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
-		Notification note=new Notification.Builder(context).setAutoCancel(true).setContentIntent(null).setContentTitle(intent.getExtras().getString("itemname"))
+		 	Toast.makeText(context,"this alarm has rung at time "+ intent.getExtras().get("time"),Toast.LENGTH_LONG).show();
+			NotificationManager manager= (NotificationManager)context.getSystemService(context.NOTIFICATION_SERVICE);
+			Notification note=new Notification.Builder(context).setAutoCancel(true).setContentIntent(null).setContentTitle(intent.getExtras().getString("itemname")).setTicker("Reminder: Buy item "+intent.getExtras().getString("itemname"))
 							.setContentText("The amount required "+intent.getExtras().getString("itemamount")).setSmallIcon(R.drawable.ic_stat_tickicon).setWhen(System.currentTimeMillis()).build();
 	
-		manager.notify(1,note);
+			manager.notify(1,note);
+		}
+		
+		
 	}
 	
 }

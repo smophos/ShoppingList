@@ -34,7 +34,7 @@ public class AddItemActivity extends Activity {
 	private String itemName, itemAmount, mType;
 	private TextView mTimeText;
 	private CheckBox mCheckBox;
-	Button mTimeButton;
+	Button mTimeButton,mPlusButton,mMinusButton;
 	
 	final static int PICKED_TIME=0;
 	final static int PICKED_TIME_TRUE=1;
@@ -53,18 +53,53 @@ public class AddItemActivity extends Activity {
 		
 		
 		getActionBar().setTitle("Add an Item");
+		
+		
+		
+		itemamount=(EditText)findViewById(R.id.itemamount_edit);
+		
 		mTimeText=(TextView)findViewById(R.id.textTime);
 		mType=getIntent().getExtras().getString("type");
 		
+		mPlusButton=(Button)findViewById(R.id.plusbutton);
+		mPlusButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				int currentValue = Integer.parseInt(itemamount.getText().toString());
+				currentValue++;
+				itemamount.setText(currentValue+"");
+			}
+		});
 		
+		mMinusButton=(Button)findViewById(R.id.minusbutton);
+		mMinusButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				int currentValue = Integer.parseInt(itemamount.getText().toString());
+				if(currentValue==0){
+					return;
+				}
+				currentValue--;
+				itemamount.setText(currentValue+"");
+			}
+		});
+		Log.i("saumya","created till here");
 		mTimeButton=(Button)findViewById(R.id.button_time);
 		mTimeButton.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				
 				Intent intent = new Intent(getApplicationContext(),AddTimeDate.class);
 				startActivityForResult(intent,PICKED_TIME);
+				
+				
+				
 			}
 			
 		});
@@ -164,9 +199,11 @@ public class AddItemActivity extends Activity {
 				}
 				insert.put("itemname",itemName);
 				insert.put("itemamount", itemAmount);
+				
 				if(mType.contains("'")){
 					mType=mType.replace("'", "''");
 				}
+				
 				insert.put("categorytype", mType);
 				if(!mTimeText.getText().toString().equals("Time is not set")){
 					

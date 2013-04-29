@@ -7,36 +7,47 @@
             android:id="@+id/spinner1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
-            android:layout_alignRight="@+id/textView2"
+            android:layout_alignLeft="@+id/timePicker1"
+            android:layout_alignRight="@+id/timePicker1"
             android:layout_below="@+id/textView2" />
 
-        <TimePicker
-            android:id="@+id/timePicker1"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/textView1" />
+            android:layout_alignLeft="@+id/spinner1"
+            android:layout_alignRight="@+id/spinner1"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="183dp"
+            android:text="Select the proximity radius"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/timePicker1"
             android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:text="Enter default time for Date Notifications"
+            android:layout_alignRight="@+id/timePicker1"
+            android:layout_marginTop="27dp"
+            android:text="Enter default time for Reminder Notifications"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <TextView
-            android:id="@+id/textView2"
+        <TimePicker
+            android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:text="Select the proximity radius"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_below="@+id/textView1"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/spinner1"
+            android:layout_alignRight="@+id/spinner1"
+            android:layout_below="@+id/spinner1"
+            android:text="Choose Default Location" />
 
     </RelativeLayout>
