@@ -5,41 +5,6 @@
     
     android:background="@drawable/listselector"
     >
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/ic_launcher" 
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        />
-
-    <TextView
-        android:id="@+id/cat_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="44dp"
-        android:layout_toRightOf="@+id/imageView1"
-        android:text="Category"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/cat_number"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/cat_name"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="70dp"
-        android:layout_centerVertical="true"
-        android:text="number"
-        android:textColor="@android:color/white"
-        android:textColorHighlight="@android:color/darker_gray"
-        android:background="@drawable/customdigit"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
     
    <!--  <Button
         android:id="@+id/cat_number"
@@ -51,7 +16,29 @@
         android:layout_alignTop="@+id/cat_name"
         android:layout_alignParentRight="true"
         android:layout_marginRight="10dp">  </Button> -->
-        
-   
+
+    <TextView
+        android:id="@+id/cat_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="22dp"
+        android:background="@drawable/customdigit"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white"
+        android:textColorHighlight="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/cat_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cat_number"
+        android:layout_alignBottom="@+id/cat_number"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="19dp"
+        android:text="Category"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
     
 </RelativeLayout>

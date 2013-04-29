@@ -232,10 +232,10 @@ public class MainActivity extends Activity {
 					TextView view=(TextView)view1.findViewById(R.id.cat_name);
 					intent.putExtra("category",view.getText());
 					
-					ImageView image=(ImageView)view1.findViewById(R.id.imageView1);
+					//ImageView image=(ImageView)view1.findViewById(R.id.imageView1);
 					
-					int i=image.getId();
-					intent.putExtra("icon",i );
+					//int i=image.getId();
+					//intent.putExtra("icon",i );
 					
 					mListView.clearFocus();
 					
