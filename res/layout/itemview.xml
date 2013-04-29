@@ -15,7 +15,8 @@
         android:layout_marginRight="10dp"
         android:gravity="center"
         android:text="0"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/itemnameval"
@@ -27,6 +28,7 @@
         android:layout_marginLeft="10dp"
         android:text="Medium Text"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+         />
 
 </RelativeLayout>
