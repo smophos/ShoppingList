@@ -7,9 +7,12 @@ import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -23,18 +26,19 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
-public class AddItemActivity extends Activity {
-
+public class AddItemActivity extends Activity implements OnClickListener,OnDateSetListener{
 	
 	private EditText itemname, itemamount;
 	private String itemName, itemAmount, mType;
 	private TextView mTimeText;
 	private CheckBox mCheckBox;
-	Button mTimeButton,mPlusButton,mMinusButton;
+	Button mTimeButton,mPlusButton,mMinusButton,mDateButton;
 	
 	final static int PICKED_TIME=0;
 	final static int PICKED_TIME_TRUE=1;
@@ -60,6 +64,13 @@ public class AddItemActivity extends Activity {
 		
 		mTimeText=(TextView)findViewById(R.id.textTime);
 		mType=getIntent().getExtras().getString("type");
+		
+		
+		mDateButton = (Button)findViewById(R.id.button2);
+		mDateButton.setOnClickListener(this);
+
+		
+		
 		
 		mPlusButton=(Button)findViewById(R.id.plusbutton);
 		mPlusButton.setOnClickListener(new OnClickListener() {
@@ -120,6 +131,15 @@ public class AddItemActivity extends Activity {
 				}
 			}
 		});
+	}
+	
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		Toast.makeText(getApplicationContext(), "Opening Dialog", Toast.LENGTH_SHORT).show();
+		Calendar cal = Calendar.getInstance();  
+		DatePickerDialog tp1 = new DatePickerDialog(this, this, cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH));
+		tp1.show();
 	}
 	
 	@Override
@@ -262,4 +282,10 @@ public class AddItemActivity extends Activity {
 		return true;
 	}
 
+	@Override
+	public void onDateSet(DatePicker view, int year, int monthOfYear,
+			int dayOfMonth) {
+		// TODO Auto-generated method stub
+		Toast.makeText(getApplicationContext(), "Date set yo!", Toast.LENGTH_SHORT).show();
+	}
 }
