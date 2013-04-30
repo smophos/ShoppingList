@@ -59,7 +59,7 @@ public class CategoryAdapter extends BaseAdapter {
 		
 		String category_name=category.getCategoryName();
 		int category_number=category.getCategoryNumber();
-		Uri image_resource=category.getCategoryIcon();
+		//Uri image_resource=category.getCategoryIcon();
 		
 		//Uri image_resource=R.drawable.ic_launcher;
 		
@@ -82,10 +82,10 @@ public class CategoryAdapter extends BaseAdapter {
 			
 		}
 		
-		ImageView category_image=(ImageView)view.findViewById(R.id.imageView1);
-		category_image.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_menu_example));
-		
+		//ImageView category_image=(ImageView)view.findViewById(R.id.imageView1);
+		//category_image.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_menu_example));
 		//category_image.setImageResource(image_resource);
+		
 		TextView categoryname_view=(TextView)view.findViewById(R.id.cat_name);
 		Log.i("saumya","got cat_name layout");
 		categoryname_view.setText(category_name);

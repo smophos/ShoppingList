@@ -1,6 +1,7 @@
 package com.example.shoppinglist;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -16,6 +18,7 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class EditActivity extends Activity {
 
@@ -23,7 +26,7 @@ public class EditActivity extends Activity {
 	private String itemName, itemAmount, mItemName;
 	private TextView mTimeText;
 	private CheckBox mCheckBox;
-	Button mTimeButton;
+	Button mTimeButton, mPlusButton, mMinusButton;
 	
 	final static int PICKED_TIME=0;
 	final static int PICKED_TIME_TRUE=1;
@@ -47,6 +50,9 @@ public class EditActivity extends Activity {
 		
 		itemname_1 = (EditText)findViewById(R.id.itemname2);
 		itemamount_2= (EditText)findViewById(R.id.itemamount2);
+		
+		mPlusButton = (Button)findViewById(R.id.plusbutton_edit);
+		mPlusButton = (Button)findViewById(R.id.minusbutton_edit);
 		
 		mTimeText=(TextView)findViewById(R.id.textTime);
 		mItemName=getIntent().getExtras().getString("name");
@@ -118,6 +124,38 @@ public class EditActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_edit, menu);
 		MenuItem add= (MenuItem)menu.findItem(R.id.save_edit);
+		add.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+			
+			@Override
+			public boolean onMenuItemClick(MenuItem item) {
+				// TODO Auto-generated method stub
+				if(itemname_1.getText().toString().equals("")&itemamount_2.getText().toString().equals("")){
+					Toast.makeText(getApplicationContext(), "No Change", Toast.LENGTH_SHORT).show();
+					return false;
+				}
+				
+				String[] changed=new String[2];
+				changed[0]=itemname_1.getHint().toString();
+				changed[1]=itemamount_2.getHint().toString();
+				ContentValues value=new ContentValues();
+				if(itemname_1.getText().toString().equals(""))
+					value.put("itemname", itemname_1.getHint().toString());
+				else
+					value.put("itemname", itemname_1.getText().toString());
+				
+				if(itemamount_2.getHint().toString().equals(""))
+					
+					value.put("itemnumber", itemamount_2.getHint().toString());
+				else
+					value.put("itemnumber", itemamount_2.getText().toString());
+				
+				getContentResolver().update(Uri.parse(ShoppingListDatabaseProvider.URIUPDATE), value, " " , changed);
+				Toast.makeText(getApplicationContext(), "Updated!", Toast.LENGTH_SHORT).show();
+				finish();
+				return false;
+			}
+		});
+		
 		return true;
 	}
 

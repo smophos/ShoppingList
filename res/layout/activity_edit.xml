@@ -24,7 +24,7 @@
         android:gravity="center"
         android:ems="10" >
 
-        <requestFocus />
+        
     </EditText>
 
     <TextView
@@ -79,7 +79,7 @@
         />
 
     <Button
-        android:id="@+id/minusbutton"
+        android:id="@+id/minusbutton_edit"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
         android:text="-" />
 
     <Button
-        android:id="@+id/plusbutton"
+        android:id="@+id/plusbutton_edit"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

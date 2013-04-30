@@ -48,6 +48,7 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 	public static final String URIDELETE="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Delete-Query/";
 	public static final String URIDELETEITEM="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Delete-Item-Query/";
 	public static final String URIRENAME="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/Rename-Query/";
+	public static final String URIUPDATE="content://com.example.shoppinglist.provider.ShoppingListDatabaseProvider/EditQuery/";
 	private TypedArray mCategory_Names;
 	private TypedArray mCategory_Numbers;
 	
@@ -195,6 +196,14 @@ public class ShoppingListDatabaseProvider extends ContentProvider{
 			mDatabase.execSQL("Update "+ CATEGORYTYPETABLE + " set "+CATEGORYTYPEAMOUNT +"=(Select COUNT(DISTINCT "+ CATEGORYITEMNAME + ") from "+CATEGORYITEMTYPETABLE + " where "+ CATEGORYITEMTYPE+"='"+values.getAsString("categorytype")+"') where "+CATEGORYTYPENAME+ "='"+values.getAsString("categorytype")+"'" );
 			
 		}
+		if(Uri.parse(URIUPDATE).equals(uri)){
+			
+			mDatabase.execSQL("Update "+ CATEGORYITEMTYPETABLE + " set "+ CATEGORYITEMNAME + "='"+values.getAsString("itemname")+ "' where "+ CATEGORYITEMNAME + "='" +arg3[0]+"'");
+			mDatabase.execSQL("Update "+ CATEGORYITEMTYPETABLE + " set "+ CATEGORYITEMAMOUNT + "='"+values.getAsString("itemnumber")+ "' where "+ CATEGORYITEMAMOUNT + "='" +arg3[1]+"'");
+			
+			
+		}
+		
 		
 		return 0;
 	}

@@ -3,6 +3,8 @@ package com.example.shoppinglist;
 import java.util.ArrayList;
 
 import android.content.Context;
+import android.text.SpannableStringBuilder;
+import android.text.style.StyleSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -65,7 +67,8 @@ public class CategoryDataAdapter extends BaseAdapter {
 		itemname.setText(item.getItemName()+"");
 		
 		TextView itemamount=(TextView)view.findViewById(R.id.itemamount);
-		itemamount.setText(item.getItemAmount()+"");
+		
+		itemamount.setText(""+item.getItemAmount()+"");
 		
 		return view;
 		
