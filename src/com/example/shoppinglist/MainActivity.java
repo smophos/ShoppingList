@@ -362,7 +362,9 @@ public class MainActivity extends Activity {
 				
 				// TODO Auto-generated method stub
 				
-				Intent intent=new Intent(getBaseContext(), SettingsActivityOption.class);
+				//Intent intent=new Intent(getBaseContext(), SettingsActivityOption.class);
+				Intent intent=new Intent(getBaseContext(), SettingsPreference.class);
+
 				startActivity(intent);
 		
 				

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name ="proximityvalues">
+        <item>50</item>
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+    <string-array name ="proximityvaluesdisplay">
+        <item>50m</item>
+        <item>200m</item>
+        <item>500m</item>
+        <item>1000m</item>
+    </string-array>
     <array name="category_list_names">
         
         <item>Books</item>

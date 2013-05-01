@@ -87,6 +87,10 @@
             android:name="com.example.shoppinglist.SearchActivity"
             android:label="@string/title_activity_search" >
         </activity>
+        <activity
+            android:name="com.example.shoppinglist.SettingsPreference"
+            android:label="Settings" >    
+        </activity>
     </application>
 
 </manifest>

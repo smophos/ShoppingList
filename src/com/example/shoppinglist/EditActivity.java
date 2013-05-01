@@ -46,7 +46,6 @@ public class EditActivity extends Activity {
 		setContentView(R.layout.activity_edit);
 		
 		Log.i("saumya","edit activity started");
-		getActionBar().setTitle("Edit the Item");
 		
 		itemname_1 = (EditText)findViewById(R.id.itemname2);
 		itemamount_2= (EditText)findViewById(R.id.itemamount2);
@@ -89,7 +88,8 @@ public class EditActivity extends Activity {
 		
 		
 		fillForm();
-		
+
+		getActionBar().setTitle("Edit the Item " + itemname_1.getHint().toString());
 	}
 
 	public void fillForm(){
@@ -131,7 +131,7 @@ public class EditActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(itemname_1.getText().toString().equals("")&itemamount_2.getText().toString().equals("")){
 					Toast.makeText(getApplicationContext(), "No Change", Toast.LENGTH_SHORT).show();
-					return false;
+					finish();
 				}
 				
 				String[] changed=new String[2];

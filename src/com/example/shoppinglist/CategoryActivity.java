@@ -45,12 +45,11 @@ public class CategoryActivity extends Activity {
 		
 		int icon=mIntent.getIntExtra("icon",0);
 		Log.i("saumya","icon value "+icon);
-		getActionBar().setTitle(itemType);
+		getActionBar().setTitle("Items in "+itemType);
 		
 		//getActionBar().setIcon(Uri.parse("icon"));
 		
 		mListView=(ListView)findViewById(R.id.ItemList);
-		
 		fillList();
 		
 		mAdapter=new CategoryDataAdapter(this, mList);

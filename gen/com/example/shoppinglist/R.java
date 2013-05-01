@@ -13,13 +13,15 @@ public final class R {
         public static final int right_slide_in=0x7f040001;
     }
     public static final class array {
-        public static final int Books=0x7f070003;
-        public static final int Books_amount=0x7f070004;
-        public static final int Groceries=0x7f070005;
-        public static final int Groceries_amount=0x7f070006;
-        public static final int category_list_icons=0x7f070001;
-        public static final int category_list_names=0x7f070000;
-        public static final int category_list_numbers=0x7f070002;
+        public static final int Books=0x7f070005;
+        public static final int Books_amount=0x7f070006;
+        public static final int Groceries=0x7f070007;
+        public static final int Groceries_amount=0x7f070008;
+        public static final int category_list_icons=0x7f070003;
+        public static final int category_list_names=0x7f070002;
+        public static final int category_list_numbers=0x7f070004;
+        public static final int proximityvalues=0x7f070000;
+        public static final int proximityvaluesdisplay=0x7f070001;
     }
     public static final class attr {
     }
@@ -217,5 +219,6 @@ public final class R {
     }
     public static final class xml {
         public static final int search1=0x7f050000;
+        public static final int settingspreference=0x7f050001;
     }
 }

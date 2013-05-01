@@ -55,16 +55,12 @@ public class AddItemActivity extends Activity implements OnClickListener,OnDateS
 		
 		setContentView(R.layout.activity_add_item);
 		
-		
-		getActionBar().setTitle("Add an Item");
-		
-		
-		
 		itemamount=(EditText)findViewById(R.id.itemamount_edit);
 		
 		mTimeText=(TextView)findViewById(R.id.textTime);
 		mType=getIntent().getExtras().getString("type");
 		
+		getActionBar().setTitle("Add an Item into "+ mType);	
 		
 		mDateButton = (Button)findViewById(R.id.button2);
 		mDateButton.setOnClickListener(this);
