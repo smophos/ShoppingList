@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="Default Time">
+        <Preference
+            android:title="Time Picker"
+            android:summary="This works almost like a button">
+            
+        </Preference> 
+    </PreferenceCategory>
+    
+    <PreferenceCategory android:title="Location Settings">
+        
+        			
+        <ListPreference android:title="Proximity Radius"
+            			android:entries="@array/proximityvaluesdisplay"
+            			android:entryValues="@array/proximityvalues"/>
+    </PreferenceCategory>
+	<PreferenceCategory android:title="General">
+	   
+	    <RingtonePreference android:title="Notification Sound"
+	        				android:persistent="true"
+	        				android:ringtoneType="notification"
+	        				android:showDefault="true"
+	        				android:showSilent="true"
+	        				android:key="ringtone"/>
+	</PreferenceCategory>
+	
+</PreferenceScreen>
